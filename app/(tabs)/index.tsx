@@ -1,98 +1,96 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { useApp } from '@/context/AppContext';
+import { useRouter } from 'expo-router';
+import React from 'react';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const router = useRouter();
+  const { users, products, transactions } = useApp();
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  const stats = [
+    { label: 'Users', value: users.length, color: 'bg-blue-500', icon: '👥' },
+    { label: 'Products', value: products.length, color: 'bg-green-500', icon: '📦' },
+    { label: 'Transactions', value: transactions.length, color: 'bg-purple-500', icon: '📝' },
+  ];
+
+  const quickActions = [
+    { title: 'Register User', route: 'register-user', color: 'bg-blue-600', icon: '➕' },
+    { title: 'Register Product', route: 'register-product', color: 'bg-green-600', icon: '📦' },
+    { title: 'Adjust Stock', route: 'adjust-stock', color: 'bg-orange-600', icon: '📊' },
+    { title: 'Product Status', route: 'product-status', color: 'bg-purple-600', icon: '🔍' },
+    { title: 'Transactions', route: 'transactions', color: 'bg-indigo-600', icon: '📋' },
+  ];
+
+  return (
+    <ScrollView className="flex-1 bg-white dark:bg-gray-900">
+      <View className="p-6">
+        <Text className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+          Inventory Management
+        </Text>
+        <Text className="text-gray-600 dark:text-gray-400 mb-6">
+          Manage users, products, and inventory
+        </Text>
+
+        <View className="mb-6">
+          <Text className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+            Overview
+          </Text>
+          <View className="flex-row gap-3">
+            {stats.map((stat) => (
+              <View
+                key={stat.label}
+                className={`${stat.color} rounded-lg p-4 flex-1`}
+              >
+                <Text className="text-2xl mb-1">{stat.icon}</Text>
+                <Text className="text-white text-2xl font-bold">{stat.value}</Text>
+                <Text className="text-white/90 text-sm">{stat.label}</Text>
+              </View>
+            ))}
+          </View>
+        </View>
+
+        <View>
+          <Text className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+            Quick Actions
+          </Text>
+          <View className="gap-3">
+            {quickActions.map((action) => (
+              <TouchableOpacity
+                key={action.route}
+                onPress={() => router.push(`/(tabs)/${action.route}` as any)}
+                className={`${action.color} rounded-lg p-4 flex-row items-center active:opacity-80`}
+              >
+                <Text className="text-2xl mr-3">{action.icon}</Text>
+                <Text className="text-white font-semibold text-lg flex-1">
+                  {action.title}
+                </Text>
+                <Text className="text-white/80">→</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+
+        {products.length > 0 && (
+          <View className="mt-6">
+            <Text className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+              Recent Products
+            </Text>
+            {products.slice(0, 5).map((product) => (
+              <View
+                key={product.sku}
+                className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 mb-2"
+              >
+                <Text className="text-gray-900 dark:text-white font-semibold">
+                  {product.name}
+                </Text>
+                <Text className="text-gray-600 dark:text-gray-400 text-sm">
+                  SKU: {product.sku} • Stock: {product.quantity} units • ${product.price.toFixed(2)}
+                </Text>
+              </View>
+            ))}
+          </View>
+        )}
+      </View>
+    </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});

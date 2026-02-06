@@ -13,7 +13,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
+        headerShown: true,
         tabBarButton: HapticTab,
       }}>
       <Tabs.Screen
@@ -24,10 +24,38 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="register-user"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Register User',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.badge.plus" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="register-product"
+        options={{
+          title: 'Register Product',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="cube.box.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="adjust-stock"
+        options={{
+          title: 'Adjust Stock',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="arrow.up.arrow.down" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="product-status"
+        options={{
+          title: 'Product Status',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="info.circle.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="transactions"
+        options={{
+          title: 'Transactions',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="list.bullet" color={color} />,
         }}
       />
     </Tabs>
