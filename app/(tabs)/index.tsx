@@ -30,7 +30,7 @@ export default function HomeScreen() {
     <ScrollView className="flex-1 bg-white dark:bg-ellatech-bgDark">
       <View className="p-6">
         <Text className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-          Inventory Management
+          Ella Tech
         </Text>
         <Text className="text-gray-600 dark:text-gray-400 mb-6">
           Manage users, products, and inventory

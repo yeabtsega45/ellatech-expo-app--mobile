@@ -9,6 +9,7 @@ interface AppContextType {
   registerProduct: (sku: string, name: string, price: number, quantity: number) => { success: boolean; error?: string };
   adjustStock: (sku: string, quantityChange: number) => { success: boolean; error?: string };
   getProduct: (sku: string) => Product | undefined;
+  logout: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -131,6 +132,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return products.find(p => p.sku.toLowerCase() === sku.toLowerCase());
   }, [products]);
 
+  const logout = useCallback(() => {
+    // Clear users to send the app back to the registration flow.
+    // Products and transactions are left intact to simulate a simple "session" logout.
+    setUsers([]);
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
@@ -141,6 +148,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         registerProduct,
         adjustStock,
         getProduct,
+        logout,
       }}
     >
       {children}
