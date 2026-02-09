@@ -28,7 +28,7 @@ export default function ProductStatusScreen() {
   };
 
   return (
-    <ScrollView className="flex-1 bg-white dark:bg-gray-900">
+    <ScrollView className="flex-1 bg-white dark:bg-ellatech-bgDark">
       <View className="p-6">
         <Text className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Product Status

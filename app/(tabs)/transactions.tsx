@@ -43,20 +43,20 @@ export default function TransactionsScreen() {
   const getTransactionColor = (type: string) => {
     switch (type) {
       case 'stock_add':
-        return 'bg-green-100 dark:bg-green-900/30 border-green-300 dark:border-green-700';
+        return 'bg-emerald-100 dark:bg-emerald-900/30 border-emerald-300 dark:border-emerald-700';
       case 'stock_remove':
-        return 'bg-red-100 dark:bg-red-900/30 border-red-300 dark:border-red-700';
+        return 'bg-rose-100 dark:bg-rose-900/30 border-rose-300 dark:border-rose-700';
       case 'product_create':
-        return 'bg-blue-100 dark:bg-blue-900/30 border-blue-300 dark:border-blue-700';
+        return 'bg-ellatech-primary/10 dark:bg-ellatech-bgCard border-ellatech-primary/40 dark:border-ellatech-primary/60';
       case 'product_update':
-        return 'bg-yellow-100 dark:bg-yellow-900/30 border-yellow-300 dark:border-yellow-700';
+        return 'bg-amber-100 dark:bg-amber-900/30 border-amber-300 dark:border-amber-700';
       default:
-        return 'bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700';
+        return 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700';
     }
   };
 
   return (
-    <ScrollView className="flex-1 bg-white dark:bg-gray-900">
+    <ScrollView className="flex-1 bg-white dark:bg-ellatech-bgDark">
       <View className="p-6">
         <Text className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Transaction History

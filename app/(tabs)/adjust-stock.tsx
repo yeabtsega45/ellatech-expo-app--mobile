@@ -79,7 +79,7 @@ export default function AdjustStockScreen() {
   };
 
   return (
-    <ScrollView className="flex-1 bg-white dark:bg-gray-900">
+    <ScrollView className="flex-1 bg-white dark:bg-ellatech-bgDark">
       <View className="p-6">
         <Text className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Adjust Stock
@@ -103,8 +103,8 @@ export default function AdjustStockScreen() {
         </View>
 
         {product ? (
-          <View className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-4">
-            <Text className="text-blue-900 dark:text-blue-300 font-semibold mb-1">
+          <View className="bg-ellatech-primary/10 dark:bg-ellatech-bgCard border border-ellatech-primary/40 dark:border-ellatech-primary/60 rounded-lg p-4 mb-4">
+            <Text className="text-ellatech-primaryDark dark:text-ellatech-primary font-semibold mb-1">
               {product.name}
             </Text>
             <Text className="text-blue-700 dark:text-blue-400 text-sm">
@@ -139,7 +139,7 @@ export default function AdjustStockScreen() {
             disabled={!product || !quantity}
             className={`flex-1 rounded-lg py-4 px-6 ${
               product && quantity
-                ? 'bg-green-600 dark:bg-green-500 active:bg-green-700 dark:active:bg-green-600'
+                ? 'bg-ellatech-primary dark:bg-ellatech-primary active:bg-ellatech-primaryDark dark:active:bg-ellatech-primaryDark'
                 : 'bg-gray-400 dark:bg-gray-600'
             }`}
           >

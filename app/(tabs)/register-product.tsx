@@ -43,7 +43,7 @@ export default function RegisterProductScreen() {
   };
 
   return (
-    <ScrollView className="flex-1 bg-white dark:bg-gray-900">
+    <ScrollView className="flex-1 bg-white dark:bg-ellatech-bgDark">
       <View className="p-6">
         <Text className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Register Product
@@ -115,7 +115,7 @@ export default function RegisterProductScreen() {
 
         <TouchableOpacity
           onPress={handleSubmit}
-          className="bg-green-600 dark:bg-green-500 rounded-lg py-4 px-6 active:bg-green-700 dark:active:bg-green-600"
+          className="bg-ellatech-primary dark:bg-ellatech-primary rounded-lg py-4 px-6 active:bg-ellatech-primaryDark dark:active:bg-ellatech-primaryDark"
         >
           <Text className="text-white text-center font-semibold text-lg">
             Register Product

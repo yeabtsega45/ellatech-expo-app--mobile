@@ -6,7 +6,17 @@ module.exports = {
   ],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        ellatech: {
+          primary: '#00C0FF',
+          primaryDark: '#0090CC',
+          // dark hero background similar to website
+          bgDark: '#020617',
+          bgCard: '#020b1f',
+        },
+      },
+    },
   },
   plugins: [],
 }

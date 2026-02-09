@@ -13,20 +13,21 @@ export default function HomeScreen() {
   }
 
   const stats = [
-    { label: 'Users', value: users.length, color: 'bg-blue-500', icon: '👥' },
-    { label: 'Products', value: products.length, color: 'bg-green-500', icon: '📦' },
-    { label: 'Transactions', value: transactions.length, color: 'bg-purple-500', icon: '📝' },
+    { label: 'Users', value: users.length, color: 'bg-ellatech-primary', icon: '👥' },
+    { label: 'Products', value: products.length, color: 'bg-sky-600', icon: '📦' },
+    { label: 'Transactions', value: transactions.length, color: 'bg-slate-700', icon: '📝' },
   ];
 
   const quickActions = [
-    { title: 'Register Product', route: 'register-product', color: 'bg-green-600', icon: '📦' },
-    { title: 'Adjust Stock', route: 'adjust-stock', color: 'bg-orange-600', icon: '📊' },
-    { title: 'Product Status', route: 'product-status', color: 'bg-purple-600', icon: '🔍' },
-    { title: 'Transactions', route: 'transactions', color: 'bg-indigo-600', icon: '📋' },
+    // Primary Ellatech action colors, aligned with website CTA
+    { title: 'Register Product', route: 'register-product', color: 'bg-ellatech-primary', icon: '📦' },
+    { title: 'Adjust Stock', route: 'adjust-stock', color: 'bg-sky-600', icon: '📊' },
+    { title: 'Product Status', route: 'product-status', color: 'bg-slate-700', icon: '🔍' },
+    { title: 'Transactions', route: 'transactions', color: 'bg-slate-800', icon: '📋' },
   ];
 
   return (
-    <ScrollView className="flex-1 bg-white dark:bg-gray-900">
+    <ScrollView className="flex-1 bg-white dark:bg-ellatech-bgDark">
       <View className="p-6">
         <Text className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Inventory Management

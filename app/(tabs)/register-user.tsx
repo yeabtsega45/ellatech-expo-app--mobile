@@ -28,7 +28,7 @@ export default function RegisterUserScreen() {
   };
 
   return (
-    <ScrollView className="flex-1 bg-white dark:bg-gray-900">
+    <ScrollView className="flex-1 bg-white dark:bg-ellatech-bgDark">
       <View className="p-6">
         <Text className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Register User
@@ -75,7 +75,7 @@ export default function RegisterUserScreen() {
 
         <TouchableOpacity
           onPress={handleSubmit}
-          className="bg-blue-600 dark:bg-blue-500 rounded-lg py-4 px-6 active:bg-blue-700 dark:active:bg-blue-600"
+          className="bg-ellatech-primary dark:bg-ellatech-primary rounded-lg py-4 px-6 active:bg-ellatech-primaryDark dark:active:bg-ellatech-primaryDark"
         >
           <Text className="text-white text-center font-semibold text-lg">
             Register User
