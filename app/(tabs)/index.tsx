@@ -1,11 +1,16 @@
 import { useApp } from '@/context/AppContext';
-import { useRouter } from 'expo-router';
+import { Redirect, useRouter } from 'expo-router';
 import React from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 export default function HomeScreen() {
   const router = useRouter();
   const { users, products, transactions } = useApp();
+
+  // If no user is registered yet, always send to the Register User screen
+  if (users.length === 0) {
+    return <Redirect href="/(tabs)/register-user" />;
+  }
 
   const stats = [
     { label: 'Users', value: users.length, color: 'bg-blue-500', icon: '👥' },

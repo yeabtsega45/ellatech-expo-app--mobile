@@ -1,24 +1,27 @@
 import { useApp } from '@/context/AppContext';
+import { Redirect } from 'expo-router';
 import React, { useState } from 'react';
 import { Alert, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function RegisterUserScreen() {
-  const { registerUser } = useApp();
+  const { registerUser, users } = useApp();
   const [email, setEmail] = useState('');
   const [fullName, setFullName] = useState('');
   const [error, setError] = useState('');
+
+  // If a user is already registered, don't stay on this screen
+  if (users.length > 0) {
+    return <Redirect href="/(tabs)" />;
+  }
 
   const handleSubmit = () => {
     setError('');
     const result = registerUser(email, fullName);
     
     if (result.success) {
-      Alert.alert('Success', 'User registered successfully!', [
-        { text: 'OK', onPress: () => {
-          setEmail('');
-          setFullName('');
-        }}
-      ]);
+      Alert.alert('Success', 'User registered successfully!');
+      setEmail('');
+      setFullName('');
     } else {
       setError(result.error || 'Registration failed');
     }
