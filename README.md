@@ -1,50 +1,93 @@
-# Welcome to your Expo app 👋
+# Ella Tech Inventory & Product Management App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is an [Expo](https://expo.dev) + [Expo Router](https://docs.expo.dev/router/introduction/) + [NativeWind](https://www.nativewind.dev/) app that simulates user and product management using local state only (no backend).
 
-## Get started
+The app lets you:
 
-1. Install dependencies
+- Register a user (email + full name)
+- Register products (SKU, name, price, quantity)
+- Adjust stock (add / remove, never below zero)
+- View product status (SKU, quantity, last updated)
+- See a paginated transaction history
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## Requirements
 
-   ```bash
-   npx expo start
-   ```
+- **Node.js** (recommended via `nvm` or `nvm-windows`)
+- **npm** (comes with Node)
+- **Expo Go** installed on your phone:
+  - Android: from Google Play
+  - iOS: from the App Store
+- **Recommended shell on Windows**: **PowerShell**
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Setup (run these in PowerShell)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+From the project root (`ellatech-expo-app`):
 
-## Get a fresh project
+```powershell
+npm install
+```
 
-When you're ready, run:
+This installs all dependencies (Expo, Expo Router, NativeWind, etc.).
 
-```bash
+---
+
+## Running the app (scan QR code with Expo Go)
+
+In **PowerShell**, from the project root:
+
+```powershell
+npx expo start
+```
+
+This will:
+
+- Start the Metro bundler
+- Open the Expo developer UI in your terminal and/or browser
+- Show a **QR code**
+
+To run the app on your phone using the **“Scan QR code”** method:
+
+- **On Android**
+  - Open the **Expo Go** app
+  - Tap **“Scan QR code”**
+  - Scan the QR code shown in your terminal or browser
+
+- **On iOS**
+  - Open the **Camera** app and point it at the QR code
+  - Tap the notification to open in **Expo Go**
+
+The app will bundle and then open on your device.
+
+---
+
+## Project behavior overview
+
+- When the app starts and **no user is registered**:
+  - You see the **Register User** screen
+  - The bottom tabs are **hidden**
+- After you register a user:
+  - You are automatically navigated to the **Home** screen
+  - The bottom tab bar appears with:
+    - Home
+    - Register Product
+    - Adjust Stock
+    - Product Status
+    - Transactions
+
+State is kept in memory only; restarting Metro / the app will clear it.
+
+---
+
+## Resetting the starter example (optional)
+
+This project started from the Expo Router template. If you ever want a clean `app` directory again:
+
+```powershell
 npm run reset-project
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This will move the current `app` folder to `app-example` and create a fresh, blank `app` directory.
