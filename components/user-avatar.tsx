@@ -9,12 +9,12 @@ export function UserAvatar() {
   const activeUser = users[0];
 
   const initials = useMemo(() => {
-    if (!activeUser.fullName) return '?';
+    if (!activeUser?.fullName) return '?';
     const parts = activeUser.fullName.trim().split(/\s+/);
     const first = parts[0]?.[0] ?? '';
     const last = parts[parts.length - 1]?.[0] ?? '';
     return (first + last).toUpperCase();
-  }, [activeUser.fullName]);
+  }, [activeUser?.fullName]);
 
   if (!activeUser) {
     return null;

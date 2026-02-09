@@ -1,3 +1,4 @@
+import { IconSymbol } from '@/components/ui/icon-symbol';
 import { useApp } from '@/context/AppContext';
 import { Redirect, useRouter } from 'expo-router';
 import React from 'react';
@@ -13,17 +14,17 @@ export default function HomeScreen() {
   }
 
   const stats = [
-    { label: 'Users', value: users.length, color: 'bg-ellatech-primary', icon: '👥' },
-    { label: 'Products', value: products.length, color: 'bg-sky-600', icon: '📦' },
-    { label: 'Transactions', value: transactions.length, color: 'bg-slate-700', icon: '📝' },
+    { label: 'Users', value: users.length, color: 'bg-ellatech-primary', icon: <IconSymbol name="person" size={24} color="white" /> },
+    { label: 'Products', value: products.length, color: 'bg-sky-600', icon: <IconSymbol name="cube" size={24} color="white" /> },
+    { label: 'Transactions', value: transactions.length, color: 'bg-slate-700', icon: <IconSymbol name="list.bullet" size={24} color="white" /> },
   ];
 
   const quickActions = [
     // Primary Ellatech action colors, aligned with website CTA
-    { title: 'Register Product', route: 'register-product', color: 'bg-ellatech-primary', icon: '📦' },
-    { title: 'Adjust Stock', route: 'adjust-stock', color: 'bg-sky-600', icon: '📊' },
-    { title: 'Product Status', route: 'product-status', color: 'bg-slate-700', icon: '🔍' },
-    { title: 'Transactions', route: 'transactions', color: 'bg-slate-800', icon: '📋' },
+    { title: 'Register Product', route: 'register-product', color: 'bg-ellatech-primary', icon: <IconSymbol name="cube" size={24} color="white" /> },
+    { title: 'Adjust Stock', route: 'adjust-stock', color: 'bg-sky-600', icon: <IconSymbol name="arrow.up.arrow.down" size={24} color="white" /> },
+    { title: 'Product Status', route: 'product-status', color: 'bg-slate-700', icon: <IconSymbol name="info" size={24} color="white" /> },
+    { title: 'Transactions', route: 'transactions', color: 'bg-slate-800', icon: <IconSymbol name="list.bullet" size={24} color="white" /> },
   ];
 
   return (
