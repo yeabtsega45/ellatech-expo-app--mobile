@@ -19,7 +19,6 @@ export default function HomeScreen() {
   ];
 
   const quickActions = [
-    { title: 'Register User', route: 'register-user', color: 'bg-blue-600', icon: '➕' },
     { title: 'Register Product', route: 'register-product', color: 'bg-green-600', icon: '📦' },
     { title: 'Adjust Stock', route: 'adjust-stock', color: 'bg-orange-600', icon: '📊' },
     { title: 'Product Status', route: 'product-status', color: 'bg-purple-600', icon: '🔍' },
